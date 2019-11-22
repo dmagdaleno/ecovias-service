@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "br.com.fiap.challenge"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
@@ -21,6 +21,8 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("io.springfox:springfox-swagger2:2.9.2")
+	implementation("io.springfox:springfox-swagger-ui:2.9.2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
@@ -35,4 +37,14 @@ tasks.withType<KotlinCompile> {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "1.8"
 	}
+}
+
+configure<ProcessResources>("processResources") {
+	filesMatching("**/*.yaml") {
+		expand(project.properties)
+	}
+}
+
+inline fun <reified C> Project.configure(name: String, configuration: C.() -> Unit) {
+	(this.tasks.getByName(name) as C).configuration()
 }

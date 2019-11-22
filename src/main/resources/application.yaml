@@ -8,3 +8,7 @@ spring:
     mongodb:
       database: ecovias_db
       uri: mongodb://127.0.1.1:27017/
+
+info:
+  build:
+    version: ${version?:unknown}
