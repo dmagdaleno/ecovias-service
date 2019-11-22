@@ -1,0 +1,10 @@
+server:
+  servlet:
+    context-path: /ecovias/api
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      database: ecovias_db
+      uri: mongodb://mongo:27017/
