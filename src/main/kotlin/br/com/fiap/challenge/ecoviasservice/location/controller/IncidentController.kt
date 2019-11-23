@@ -3,12 +3,12 @@ package br.com.fiap.challenge.ecoviasservice.location.controller
 import br.com.fiap.challenge.ecoviasservice.location.domain.Incident
 import br.com.fiap.challenge.ecoviasservice.location.service.IncidentService
 import org.springframework.http.ResponseEntity
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 import java.net.URI
 
-@Controller
+@RestController
+@CrossOrigin(origins = ["*"])
 @RequestMapping("/incidents")
 class IncidentController(private val service: IncidentService) {
 

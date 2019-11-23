@@ -3,15 +3,11 @@ package br.com.fiap.challenge.ecoviasservice.location.controller
 import br.com.fiap.challenge.ecoviasservice.location.domain.Location
 import br.com.fiap.challenge.ecoviasservice.location.service.LocationService
 import org.springframework.http.ResponseEntity
-import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.*
 import java.net.URI
 
-@Controller
+@RestController
+@CrossOrigin(origins = ["*"])
 @RequestMapping("/locations")
 class LocationController(private val service: LocationService) {
 
