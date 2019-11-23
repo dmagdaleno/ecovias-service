@@ -1,5 +1,6 @@
 package br.com.fiap.challenge.ecoviasservice.location.domain
 
+import br.com.fiap.challenge.ecoviasservice.location.functions.now
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
@@ -27,7 +28,7 @@ data class Incident (
         return this.copy(
             id = UUID.randomUUID().toString(),
             status = IncidentStatus.PENDING,
-            timestamp = LocalDateTime.now()
+            timestamp = now()
         )
     }
 }
