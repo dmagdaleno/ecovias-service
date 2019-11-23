@@ -1,6 +1,7 @@
 package br.com.fiap.challenge.ecoviasservice.location.service
 
 import br.com.fiap.challenge.ecoviasservice.location.domain.Incident
+import br.com.fiap.challenge.ecoviasservice.location.domain.IncidentStatus
 import br.com.fiap.challenge.ecoviasservice.location.repository.IncidentRepository
 import org.springframework.stereotype.Service
 
@@ -17,5 +18,13 @@ class IncidentService(private val repository: IncidentRepository) {
 
     fun findAll(): Collection<Incident> = repository.findAll()
 
-    fun findAllByUserId(userId: String): Collection<Incident> = repository.findAllByUserId(userId)
+    fun findAllPending(): Collection<Incident> = repository.findAllByStatus(IncidentStatus.PENDING)
+
+    fun findAllByUserId(userId: String): Collection<Incident> =
+        repository.findAllByUserIdAndStatus(userId, IncidentStatus.PENDING)
+
+    fun resolveIncident(id: String): Incident? {
+        val incident = findById(id) ?: return null
+        return repository.save(incident.copy(status = IncidentStatus.RESOLVED))
+    }
 }

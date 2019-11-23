@@ -1,13 +1,13 @@
 server:
   servlet:
     context-path: /ecovias/api
-  port: 8080
+  port: 8081
 
 spring:
   data:
     mongodb:
       database: ecovias_db
-      uri: mongodb://127.0.1.1:27017/
+      uri: mongodb://localhost:27017/
 
 info:
   build:
