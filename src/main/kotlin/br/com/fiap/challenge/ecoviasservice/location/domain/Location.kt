@@ -1,5 +1,6 @@
 package br.com.fiap.challenge.ecoviasservice.location.domain
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import org.springframework.data.annotation.Id
@@ -14,6 +15,7 @@ data class Location (
     val id: String?,
     val user: User,
     val position: Position,
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
     val timestamp: LocalDateTime?
 ) {
     @JsonIgnore
